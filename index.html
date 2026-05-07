@@ -12,11 +12,8 @@
     <style>
         :root {
             --primary: #ff003c;
-            /* Neon Red */
             --secondary: #d4af37;
-            /* Gold */
             --accent: #00f2ff;
-            /* Cyan */
             --bg-dark: #050505;
             --card-bg: #121212;
             --text: #ffffff;
@@ -36,90 +33,76 @@
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-dark);
-            background-image:
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 60, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
+            background-image: radial-gradient(circle at 10% 20%, rgba(255, 0, 60, 0.12) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
             background-attachment: fixed;
             color: var(--text);
             min-height: 100vh;
             padding: 10px;
-            line-height: 1.6;
-            overflow-x: hidden;
+            padding-bottom: 120px;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding-bottom: 40px;
         }
 
-        /* Header Section */
         header {
             text-align: center;
-            padding: 50px 20px 30px;
-            position: relative;
-        }
-
-        .logo-area {
-            display: inline-block;
-            position: relative;
+            padding: 40px 20px 20px;
         }
 
         .logo-area h1 {
             font-family: 'Bangers', cursive;
-            font-size: clamp(3.5rem, 10vw, 5rem);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-size: 4rem;
             background: linear-gradient(to bottom, #ffffff 30%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
             line-height: 0.9;
         }
 
         .logo-area .year {
-            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-size: 1.8rem;
             color: var(--primary);
             font-weight: 800;
             display: block;
-            margin-top: -5px;
             text-shadow: var(--neon-glow);
             letter-spacing: 5px;
         }
 
-        header p {
-            color: var(--text-dim);
-            font-size: 0.8rem;
-            margin-top: 25px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 400;
+        .search-container {
+            margin: 0 10px 30px;
+            position: relative;
         }
 
-        /* Navigation Tabs */
-        .nav-container {
-            position: sticky;
-            top: 10px;
-            z-index: 100;
-            margin-bottom: 30px;
-            padding: 0 5px;
+        .search-input {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.2);
         }
 
         .nav-tabs {
             display: flex;
             background: rgba(20, 20, 20, 0.8);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 50px;
             padding: 5px;
+            margin-bottom: 30px;
             overflow-x: auto;
             scrollbar-width: none;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-tabs::-webkit-scrollbar {
-            display: none;
         }
 
         .tab-btn {
@@ -128,16 +111,12 @@
             border: none;
             background: none;
             color: var(--text-dim);
-            font-weight: 600;
-            font-size: 0.85rem;
+            font-weight: 800;
+            font-size: 0.8rem;
             cursor: pointer;
             border-radius: 40px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            text-transform: uppercase;
         }
 
         .tab-btn.active {
@@ -146,58 +125,6 @@
             box-shadow: 0 4px 15px rgba(255, 0, 60, 0.4);
         }
 
-        /* Content Area */
-        .content-section {
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 0 15px;
-        }
-
-        .section-header h2 {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .refresh-btn {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .refresh-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Asset Grid */
         .asset-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -210,182 +137,124 @@
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
             position: relative;
+            transition: 0.3s;
         }
 
-        .asset-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(255, 0, 60, 0.15);
-            transform: translateY(-5px);
+        .asset-card.selected {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
         }
 
         .asset-preview {
             aspect-ratio: 9/16;
             background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
             position: relative;
+            cursor: pointer;
         }
 
         .asset-preview img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            cursor: zoom-in;
-            transition: transform 0.6s ease;
-        }
-
-        .asset-card:hover .asset-preview img {
-            transform: scale(1.08);
-        }
-
-        .asset-info {
-            padding: 15px;
         }
 
         .asset-title {
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 5px;
-            display: block;
             color: white;
-        }
-
-        .asset-meta {
-            font-size: 0.7rem;
-            color: var(--text-dim);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-align: center;
             display: block;
-            margin-bottom: 15px;
         }
 
-        /* Action Buttons */
         .btn-group {
+            padding: 15px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .btn {
-            padding: 12px;
+        .btn-share {
+            padding: 14px;
             border: none;
             border-radius: 12px;
-            font-weight: 800;
-            font-size: 0.8rem;
+            font-weight: 900;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             width: 100%;
-        }
-
-        .btn-primary {
+            transition: 0.2s;
             background: linear-gradient(135deg, var(--primary) 0%, #a30026 100%);
             color: white;
             box-shadow: 0 5px 15px rgba(255, 0, 60, 0.3);
         }
 
-        .btn-secondary-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        .btn-wa {
-            background: #25D366;
-            color: white;
-        }
-
-        .btn-copy {
-            background: var(--glass);
-            color: white;
+        .btn-select {
+            padding: 12px;
             border: 1px solid var(--glass-border);
-        }
-
-        .btn:active {
-            transform: scale(0.97);
-        }
-
-        /* Badges */
-        .badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            padding: 5px 10px;
-            border-radius: 30px;
-            font-size: 0.65rem;
-            font-weight: 800;
-            z-index: 2;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
             text-transform: uppercase;
+            width: 100%;
+            transition: 0.2s;
+            background: var(--glass);
+            color: var(--text-dim);
         }
 
-        .badge-new {
+        .btn-select.active {
             background: var(--accent);
             color: #000;
-            box-shadow: 0 0 10px var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
         }
 
-        .badge-posted {
-            background: #25D366;
-            color: white;
+        .btn-share:active,
+        .btn-select:active {
+            transform: scale(0.95);
         }
 
-        /* Overlay for Videos */
-        .video-icon {
-            position: absolute;
-            z-index: 1;
-            font-size: 2rem;
-            color: white;
-            opacity: 0.8;
-            pointer-events: none;
-            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-dim);
-            font-size: 0.75rem;
-            border-top: 1px solid var(--glass-border);
-            margin-top: 40px;
-        }
-
-        /* Modal Preview */
-        #previewModal {
-            display: none;
+        .selection-bar {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        #modalImg {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Loading */
-        .loader-container {
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            width: calc(100% - 40px);
+            max-width: 500px;
+            background: #ffffff;
+            padding: 15px 25px;
+            border-radius: 50px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            z-index: 1000;
+            transition: 0.4s;
+            color: #000;
+            font-weight: 800;
+        }
+
+        .selection-bar.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .btn-bulk {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .loader-container {
+            text-align: center;
             padding: 100px 20px;
         }
 
@@ -396,7 +265,7 @@
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            margin-bottom: 15px;
+            margin: 0 auto 15px;
         }
 
         @keyframes spin {
@@ -405,23 +274,9 @@
             }
         }
 
-        /* Responsive */
         @media (max-width: 480px) {
             .asset-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .logo-area h1 {
-                font-size: 3.5rem;
-            }
-
-            .nav-tabs {
-                border-radius: 15px;
-            }
-
-            .tab-btn {
-                padding: 10px 15px;
-                font-size: 0.75rem;
             }
         }
     </style>
@@ -434,217 +289,189 @@
                 <h1>BODE NIGHT</h1>
                 <span class="year">2026</span>
             </div>
-            <p>Portal de Marketing & Divulgação</p>
         </header>
 
-        <div class="nav-container">
-            <nav class="nav-tabs" id="mainNav">
-                <button class="tab-btn active" onclick="switchTab('chamadas')">📣 Chamadas</button>
-                <button class="tab-btn" onclick="switchTab('patrocinadores')">🤝 Patrocinadores</button>
-                <button class="tab-btn" onclick="switchTab('reels')">📽️ Reels</button>
-                <button class="tab-btn" onclick="switchTab('links')">🔗 Links Úteis</button>
-            </nav>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Pesquisar arte pelo nome..."
+                oninput="handleSearch()">
         </div>
+
+        <nav class="nav-tabs" id="mainNav"></nav>
 
         <main id="contentArea">
             <div class="loader-container">
                 <div class="loader"></div>
-                <p style="color: var(--text-dim); font-size: 0.8rem;">Carregando portal...</p>
+                <p>Buscando artes...</p>
             </div>
         </main>
 
-        <footer>
-            <p>&copy; 2026 Bode Night • Marketing Premium</p>
-            <p style="margin-top: 5px; opacity: 0.5;">Dica: Use o botão "Postar no Status" para compartilhar direto.</p>
-        </footer>
-    </div>
-
-    <div id="previewModal" onclick="this.style.display='none'">
-        <img id="modalImg" src="">
+        <div id="selectionBar" class="selection-bar">
+            <span id="selectionCount">0 selecionadas</span>
+            <button class="btn-bulk" onclick="shareSelected()">COMPARTILHAR TUDO</button>
+        </div>
     </div>
 
     <script>
-        // ==========================================
-        // CONFIGURAÇÃO DE AUTOMAÇÃO (GOOGLE DRIVE)
-        // ==========================================
-        const LINK_DO_MEU_SCRIPT = "https://script.google.com/macros/s/AKfycbx6GIu9Qu9XFq2y5exPDi4yAaT14fmSVb7HGtQ65yazXHjh5jxa7MXG9GhVW36gEr9E/exec";
-
+        const LINK_DO_MEU_SCRIPT = "https://script.google.com/macros/s/AKfycby0hm2xKvh0c9XgJiXwV2Y_GqxbGbsVnj_onzteU0fHc-SYJjN4CvFOBG168AvPzR2_NA/exec";
         let ASSETS_DATA = {};
         let currentTab = '';
-        let isSyncing = false;
+        let selectedIds = new Set();
+        let searchTerm = '';
 
         async function sincronizarComDrive() {
-            if (!LINK_DO_MEU_SCRIPT || LINK_DO_MEU_SCRIPT.includes("COLE_O_LINK")) return;
-
-            isSyncing = true;
-            document.getElementById('contentArea').innerHTML = `
-                <div class="loader-container">
-                    <div class="loader"></div>
-                    <p style="color: var(--text-dim); font-size: 0.8rem;">Sincronizando com as pastas do Drive...</p>
-                </div>`;
-
             try {
                 const response = await fetch(LINK_DO_MEU_SCRIPT);
                 const data = await response.json();
-
                 ASSETS_DATA = data;
-
-                // Pega a primeira pasta como aba inicial se não houver uma selecionada
-                const categories = Object.keys(ASSETS_DATA);
+                const categories = Object.keys(data);
                 if (categories.length > 0) {
-                    if (!currentTab || !ASSETS_DATA[currentTab]) {
-                        currentTab = categories[0];
-                    }
+                    if (!currentTab) currentTab = categories[0];
                     renderTabs(categories);
-                } else {
-                    document.getElementById('contentArea').innerHTML = `
-                        <div style="text-align:center; padding: 50px; color: var(--text-dim);">
-                            <p>Nenhuma subpasta encontrada na pasta principal.</p>
-                            <small>Crie pastas dentro da pasta "Bode Night - 2026" no Drive.</small>
-                        </div>`;
                 }
-
                 render();
             } catch (e) {
-                console.error("Erro ao sincronizar:", e);
-                document.getElementById('contentArea').innerHTML = `
-                    <div style="text-align:center; padding: 50px; color: var(--primary);">
-                        <p>Erro ao conectar com o Drive.</p>
-                        <button class="refresh-btn" style="margin-top:20px" onclick="sincronizarComDrive()">Tentar Novamente</button>
-                    </div>`;
-            } finally {
-                isSyncing = false;
+                document.getElementById('contentArea').innerHTML = "Erro ao carregar. Tente novamente.";
             }
+        }
+
+        function handleSearch() {
+            searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            render();
         }
 
         function renderTabs(categories) {
             const nav = document.getElementById('mainNav');
             nav.innerHTML = '';
-
             categories.forEach(cat => {
                 const btn = document.createElement('button');
                 btn.className = `tab-btn ${currentTab === cat ? 'active' : ''}`;
-                btn.innerHTML = `${cat}`;
-                btn.onclick = () => switchTab(cat);
+                btn.innerText = cat;
+                btn.onclick = () => { currentTab = cat; render(); renderTabs(categories); };
                 nav.appendChild(btn);
             });
-
-            // Adiciona abas fixas no final se desejar
-            const reelBtn = document.createElement('button');
-            reelBtn.className = 'tab-btn';
-            reelBtn.innerHTML = '📽️ Reels';
-            reelBtn.onclick = () => window.open('https://www.instagram.com', '_blank');
-            nav.appendChild(reelBtn);
-        }
-
-        function switchTab(tabId) {
-            currentTab = tabId;
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText === tabId);
-            });
-            render();
         }
 
         function render() {
             const container = document.getElementById('contentArea');
-            if (!currentTab || !ASSETS_DATA[currentTab]) return;
-
             const data = ASSETS_DATA[currentTab] || [];
 
-            let html = `<div class="content-section">
-                <div class="section-header">
-                    <h2>📁 ${currentTab.toUpperCase()}</h2>
-                    <button class="refresh-btn" onclick="sincronizarComDrive()">⟳ Sincronizar</button>
-                </div>
-                <div class="asset-grid">`;
+            // Filtro de busca
+            let filteredData = data.filter(item =>
+                item.title.toLowerCase().includes(searchTerm)
+            );
 
-            if (data.length === 0) {
-                html += `<div style="grid-column: 1/-1; text-align: center; padding: 60px; color: var(--text-dim);">
-                    <p>Nenhum arquivo nesta pasta do Drive.</p>
+            // Ordenação personalizada: Letras primeiro, Números por último
+            filteredData.sort((a, b) => {
+                const titleA = a.title.trim();
+                const titleB = b.title.trim();
+                const startsWithNumA = /^[0-9]/.test(titleA);
+                const startsWithNumB = /^[0-9]/.test(titleB);
+
+                if (!startsWithNumA && startsWithNumB) return -1;
+                if (startsWithNumA && !startsWithNumB) return 1;
+
+                return titleA.localeCompare(titleB, undefined, { numeric: true, sensitivity: 'base' });
+            });
+
+            let html = `<div class="asset-grid">`;
+            filteredData.forEach(item => {
+                const isSelected = selectedIds.has(item.id);
+                html += `
+                <div class="asset-card ${isSelected ? 'selected' : ''}">
+                    <div class="asset-preview" onclick="toggleSelect('${item.id}')">
+                        ${item.isVideo ? '<div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; font-size:3rem; opacity:0.7;">▶</div>' : ''}
+                        <img src="${item.url}" alt="Bode Night">
+                    </div>
+                    <div class="btn-group">
+                        <span class="asset-title">${item.title}</span>
+                        <button class="btn-share" onclick="shareAsset('${item.url}', '${item.title}')">
+                            📤 COMPARTILHAR
+                        </button>
+                        <button class="btn-select ${isSelected ? 'active' : ''}" onclick="toggleSelect('${item.id}')">
+                            ${isSelected ? '✓ SELECIONADO' : '➕ SELECIONAR VÁRIOS'}
+                        </button>
+                    </div>
                 </div>`;
-            } else {
-                data.forEach(item => {
-                    const isPosted = localStorage.getItem('posted_' + item.id);
-                    html += `
-                    <div class="asset-card">
-                        <div class="asset-preview">
-                            ${item.isVideo ? '<div class="video-icon">▶</div>' : ''}
-                            <img src="${item.url}" alt="${item.title}" onclick="openPreview('${item.url}')" onerror="this.src='https://via.placeholder.com/400x711/1a1a1a/ffffff?text=Erro+no+Link'">
-                            ${item.isNew ? '<span class="badge badge-new">Novo</span>' : ''}
-                            ${isPosted ? '<span class="badge badge-posted">✅ Postado</span>' : ''}
-                        </div>
-                        <div class="asset-info">
-                            <span class="asset-title">${item.title}</span>
-                            <span class="asset-meta">📁 ${item.file} • 📅 ${item.date}</span>
-                            <div class="btn-group">
-                                <button class="btn btn-primary" onclick="shareAsset('${item.id}', '${item.url}', '${item.title}')">
-                                    📤 Postar no Status
-                                </button>
-                                <div class="btn-secondary-group">
-                                    <button class="btn btn-wa" onclick="shareToWA('${item.url}', '${item.title}')">WhatsApp</button>
-                                    <button class="btn btn-copy" onclick="copyLink('${item.url}')">Link</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>`;
-                });
+            });
+            container.innerHTML = html + `</div>`;
+        }
+
+        function toggleSelect(id) {
+            if (id) {
+                if (selectedIds.has(id)) selectedIds.delete(id);
+                else selectedIds.add(id);
             }
-
-            html += `</div></div>`;
-            container.innerHTML = html;
+            const bar = document.getElementById('selectionBar');
+            document.getElementById('selectionCount').innerText = selectedIds.size + " selecionadas";
+            if (selectedIds.size > 0) bar.classList.add('visible');
+            else bar.classList.remove('visible');
+            render();
         }
 
-        function openPreview(url) {
-            const modal = document.getElementById('previewModal');
-            document.getElementById('modalImg').src = url;
-            modal.style.display = 'flex';
-        }
-
-        async function shareAsset(id, url, title) {
+        async function shareAsset(url, title) {
             try {
                 const response = await fetch(url);
                 const blob = await response.blob();
-                const file = new File([blob], 'bode_night.jpg', { type: 'image/jpeg' });
+                const fileName = `${title}.jpg`;
+                const file = new File([blob], fileName, { type: 'image/jpeg' });
 
                 if (navigator.share && navigator.canShare({ files: [file] })) {
                     await navigator.share({
                         files: [file],
-                        title: 'Bode Night 2026',
-                        text: `Bode Night 2026 🐐🔥`
+                        title: title
                     });
-                    localStorage.setItem('posted_' + id, 'true');
-                    render();
                 } else {
-                    downloadFallback(url, id);
+                    baixar(url, title);
                 }
-            } catch (err) {
-                downloadFallback(url, id);
-            }
+            } catch (err) { baixar(url, title); }
         }
 
-        function downloadFallback(url, id) {
+        function baixar(url, title = 'bode_night') {
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'bode_night.jpg';
-            document.body.appendChild(a);
+            a.download = `${title}.jpg`;
             a.click();
-            document.body.removeChild(a);
-
-            alert("Imagem baixada! Abra o WhatsApp e poste no seu Status.");
-            localStorage.setItem('posted_' + id, 'true');
-            setTimeout(() => { window.location.href = "whatsapp://send"; }, 1000);
-            render();
         }
 
-        function shareToWA(url, title) {
-            const text = `🔥 *Bode Night 2026* 🔥\n\nConfira esta arte: ${url}`;
-            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-        }
+        async function shareSelected() {
+            const items = ASSETS_DATA[currentTab].filter(i => selectedIds.has(i.id));
+            if (items.length === 0) return;
 
-        function copyLink(url) {
-            navigator.clipboard.writeText(url).then(() => {
-                alert("✅ Link copiado!");
-            });
+            const btn = document.querySelector('.btn-bulk');
+            const originalText = btn.innerText;
+            btn.innerText = "PREPARANDO...";
+            btn.disabled = true;
+
+            try {
+                const files = [];
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    const res = await fetch(item.url);
+                    const blob = await res.blob();
+                    const fileName = `${item.title}.jpg`;
+                    files.push(new File([blob], fileName, { type: 'image/jpeg' }));
+                }
+
+                if (navigator.share && navigator.canShare({ files })) {
+                    await navigator.share({
+                        files: files,
+                        title: 'Bode Night 2026'
+                    });
+                    selectedIds.clear();
+                    toggleSelect(null);
+                } else {
+                    alert("Baixando selecionados...");
+                    for (const item of items) {
+                        baixar(item.url, item.title);
+                        await new Promise(r => setTimeout(r, 500));
+                    }
+                }
+            } catch (err) {
+                alert("Erro ao preparar arquivos.");
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
         }
 
         document.addEventListener('DOMContentLoaded', sincronizarComDrive);
